@@ -131,18 +131,42 @@ doIt = function(searchParam2){
     });
 }
 
+stalkerLogger = function(stalkAction, stalkParam){
+    if(stalkParam){
+        fs.appendFile("node-logs", stalkAction + "," + stalkParam + " | ", function(err){
+            if(err){
+                console.log(err);
+            } else {
+                console.log("Action Logged");
+            }
+        });
+    } else {
+        fs.appendFile("node-logs", stalkAction + " | ", function(err){
+            if(err){
+                console.log(err);
+            } else {
+                console.log("Action Logged");
+            }
+        });
+    }
+};
+
 
 switch(action){
     case "my-tweets":
+        stalkerLogger(action);
         gitTwits();
         break;
     case "spotify-this-song":
+        stalkerLogger(action, searchParam);
         spottySong();
         break;
     case "movie-this":
+        stalkerLogger(action, searchParam);
         omgMove();
         break;
     case "do-what-it-says":
+        stalkerLogger(action, searchParam);
         doIt(searchParam);
         break;
     default:

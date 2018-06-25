@@ -3,6 +3,7 @@ var keys = require('./keys.js');
 var Spotify = require('node-spotify-api');
 var Twitter = require('twitter');
 var request = require('request');
+var fs = require('fs');
 var pa = process.argv;
 var action = process.argv[2];
 var searchParam = process.argv[3];
@@ -31,7 +32,10 @@ tweet:       ${tweets[i].text}
      });
 };
 
-spottySong = function(){
+spottySong = function(takeOver){
+    if(takeOver){
+        searchParam = takeOver;
+    }
     if(searchParam === undefined){
         searchParam = "the sign";
     }
@@ -54,7 +58,10 @@ Album: ${data.tracks.items[i].album.name}
     })
 }
 
-omgMove = function(){
+omgMove = function(takeOver){
+    if(takeOver){
+        searchParam = takeOver;
+    }
     moviePasser = searchParam.split(' ').join('+');
     //or .replace(/ /g,'+');
     url = 'https://www.omdbapi.com/?t=' + moviePasser + '&apikey=trilogy';
@@ -85,6 +92,45 @@ Actors: ${movieAct.Actors}
     });
 };
 
+doItSwitcher = function(command, param){
+    
+    switch(command){
+        case "my-tweets":
+            gitTwits();
+            break;
+        case "spotify-this-song":
+            spottySong(param);
+            break;
+        case "movie-this":
+            omgMove(param);
+            break;
+        default: console.log("You shouldn't be seeing this");
+    }
+};
+
+doIt = function(searchParam2){
+    fs.readFile("random.txt", "utf8", function(error, data){
+        if(error){
+            return console.log(error);
+        } else{
+            var dataActArr = data.split("|");
+            if(searchParam2){
+                searchParam2 -= 1;
+            } else {
+                searchParam2 = 0;
+            };
+            newDatArr = dataActArr[searchParam2].split(",");
+            actionPasser = newDatArr[0];
+            if(newDatArr.length > 1){
+                newSearch = newDatArr[1];
+            } else {
+                newSearch = null;
+            }
+            doItSwitcher(actionPasser, newSearch);
+        }
+    });
+}
+
 
 switch(action){
     case "my-tweets":
@@ -97,5 +143,11 @@ switch(action){
         omgMove();
         break;
     case "do-what-it-says":
+        doIt(searchParam);
         break;
+    default:
+        console.log(`==========================
+Options:  my-tweets, spotify-this-song <song name here>, movie-this <movie name here> do-what-it-says <number (1-3) here>        
+Type: node liri.js <your option here>
+==========================`);
 };

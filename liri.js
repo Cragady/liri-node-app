@@ -133,7 +133,7 @@ doIt = function(searchParam2){
 
 stalkerLogger = function(stalkAction, stalkParam){
     if(stalkParam){
-        fs.appendFile("node-logs", stalkAction + "," + stalkParam + " | ", function(err){
+        fs.appendFile("node-logs", stalkAction + "," + stalkParam + "|", function(err){
             if(err){
                 console.log(err);
             } else {
@@ -141,7 +141,7 @@ stalkerLogger = function(stalkAction, stalkParam){
             }
         });
     } else {
-        fs.appendFile("node-logs", stalkAction + " | ", function(err){
+        fs.appendFile("node-logs", stalkAction + "|", function(err){
             if(err){
                 console.log(err);
             } else {

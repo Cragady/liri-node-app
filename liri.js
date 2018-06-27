@@ -37,7 +37,7 @@ spottySong = function(takeOver){
         searchParam = takeOver;
     }
     if(searchParam === undefined){
-        searchParam = "the sign";
+        searchParam = "the sign ace of base";
     }
     spotify.search({type: 'track', query: searchParam, popularity: 100, limit: 20}, function(err, data){
         if (err){
@@ -171,6 +171,7 @@ switch(action){
         break;
     default:
         console.log(`==========================
+To narrow searches with Spotify, include artist and/or album name as well
 Options:  my-tweets, spotify-this-song <song name here>, movie-this <movie name here> do-what-it-says <number (1-3) here>        
 Type: node liri.js <your option here>
 ==========================`);

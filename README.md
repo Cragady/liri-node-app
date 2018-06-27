@@ -50,5 +50,26 @@ The functions in this little project are fairly straight-forward. The `if statem
         * `random.txt` can be swapped with `node-logs` to execute an action previously carried out.
 
 
+**Function Demos**
+
+* *my-tweets*
+
+  <img src="gifs/my-tweets.gif" width="700" height="500" alt="my-tweets liri">
+
+* *movie-this*
+
+  <img src="gifs/movie-this.gif" width="700" height="500" alt="movie-this liri">
+
+* *spotify-this-song*
+
+  <img src="gifs/spotify-this-song.gif" width="700" height="500" alt="spotify-this-song liri">
+
+* *do-what-it-says*
+
+  <img src="gifs/do-what-it-says.gif" width="700" height="500" alt="do-what-it-says liri">
+
+* **Using the actions logger to "do what it says"**
+
+  <img src="gifs/do-what-the-logger-says.gif" width="700" height="500" alt="do-what-the-logger-says liri">
 
 

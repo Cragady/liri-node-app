@@ -2,7 +2,7 @@
 To create an application that pulls data from Spotify, Twitter, and OMDB through node's `process.argv`. This application works by assigning the arguments put into node with the command line as commands and search parameters depending on the positioning of the arguments used in the comand line.
 
 **Installation/Keys**
-The `package.json` file will have all of the npm installations required listed under `"dependencies"`. Run `npm install <package name(s) here>` in the command line for code functionality. 
+The `package.json` file will have all of the npm installations required listed under `"dependencies"`. Run `npm install` OR `npm install <package name(s) here>` in the command line for code functionality. 
 
 The keys can be put into a created file named `.env`, which may be the easiest way to test functionality with how this is set up. The inside of the `.env` file should look like this: 
 

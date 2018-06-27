@@ -62,6 +62,9 @@ omgMove = function(takeOver){
     if(takeOver){
         searchParam = takeOver;
     }
+    if(searchParam === undefined){
+        searchParam = "mr nobody";
+    }
     moviePasser = searchParam.split(' ').join('+');
     //or .replace(/ /g,'+');
     url = 'https://www.omdbapi.com/?t=' + moviePasser + '&apikey=trilogy';

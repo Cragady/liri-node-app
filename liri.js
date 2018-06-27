@@ -39,7 +39,7 @@ spottySong = function(takeOver){
     if(searchParam === undefined){
         searchParam = "the sign";
     }
-    spotify.search({type: 'track', query: searchParam}, function(err, data){
+    spotify.search({type: 'track', query: searchParam, popularity: 100, limit: 20}, function(err, data){
         if (err){
             return console.log('Error occurred: ' + err);
         }
